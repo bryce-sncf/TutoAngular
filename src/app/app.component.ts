@@ -1,10 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { POKEMONS } from './mock-pokemon-list';
+import { Pokemon } from './pokemon';
+
+
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  template: `<h1>Liste de Pokémons</h1>`
 })
-export class AppComponent {
-  title = 'TutoAngular';
+export class AppComponent implements OnInit{
+  pokemonList: Pokemon[] = POKEMONS;
+
+  ngOnInit() {
+    console.table(this.pokemonList);
+    this.selectPokemon(this.pokemonList[0]);
+  }
+
+  selectPokemon(pokemon: Pokemon) {
+    console.log(`Vous avez selectionné ${pokemon.name} !`);
+  }
 }
