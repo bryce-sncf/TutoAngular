@@ -1,32 +1,6 @@
-<h1 class="center">Liste de Pokémons</h1>
-
-<div class="container">
-  <div class="row">
-    <div class="col m4" *ngFor="let pokemon of pokemonList">
-      <div
-        class="card horizontal"
-        (click)="selectPokemon(pokemon)"
-        pkmBorderCard="red"
-      >
-        <div class="card-image">
-          <img [src]="pokemon.picture" />
-        </div>
-        <div class="card-stached">
-          <div class="card-content">
-            <p>{{ pokemon.name }}</p>
-            <p>
-              <small>
-                {{ pokemon.created | date : "dd/mm/yyyy" | uppercase }}
-              </small>
-              <span
-                *ngFor="let type of pokemon.types"
-                class="{{ type | pokemonTypeColor }}"
-                >{{ type }}
-              </span>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
+<nav>
+  <div class="nav-wrapper teal">
+    <a href="#" class="brand-logo center"> Pokédex </a>
   </div>
-</div>
+</nav>
+<router-outlet></router-outlet>
