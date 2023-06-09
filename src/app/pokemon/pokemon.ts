@@ -1,9 +1,11 @@
 export class Pokemon {
-    id: number|undefined;
-    hp: number|undefined;
-    cp: number|undefined;
-    name: string|undefined;
-    picture: string|undefined;
-    types: Array<string> | undefined;
-    created: Date|undefined;
-  }
+  constructor(
+    public id: number,
+    public hp: number,
+    public cp: number,
+    public name: string,
+    public picture: string,
+    public types: Array<string>,
+    public created: Date,
+  ) {}
+}
