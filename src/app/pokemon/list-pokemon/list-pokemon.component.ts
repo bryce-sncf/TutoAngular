@@ -1,17 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Pokemon } from '../pokemon';
-import { POKEMONS } from '../mock-pokemon-list';
 import { Router } from '@angular/router';
+import { PokemonService } from '../pokemon.service';
 
 @Component({
   selector: 'app-list-pokemon',
   templateUrl: './list-pokemon.component.html',
 })
-export class ListPokemonComponent {
+export class ListPokemonComponent implements OnInit{
 
-  pokemonList: Pokemon[] = POKEMONS;
+  pokemonList: Pokemon[] =  [];
 
-  constructor(private routers: Router) { }
+  constructor(private routers: Router, 
+              private pokemonService: PokemonService
+              ) { }
+
+ngOnInit()
+{
+this.pokemonList = this.pokemonService.getPokemonList();
+}
 
   goToPokemon(pokemon: Pokemon) {
 this.routers.navigate(['/pokemons', pokemon.id]);
