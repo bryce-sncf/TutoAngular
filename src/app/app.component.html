@@ -16,8 +16,13 @@
             <p>{{ pokemon.name }}</p>
             <p>
               <small>
-                {{ pokemon.created }}
+                {{ pokemon.created | date : "dd/mm/yyyy" | uppercase }}
               </small>
+              <span
+                *ngFor="let type of pokemon.types"
+                class="{{ type | pokemonTypeColor }}"
+                >{{ type }}
+              </span>
             </p>
           </div>
         </div>
