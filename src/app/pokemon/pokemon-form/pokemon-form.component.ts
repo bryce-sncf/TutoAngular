@@ -55,8 +55,10 @@ return true
 
 onSubmit()
 {
-console.log("submit form !")
-this.router.navigate(['/pokemon', this.pokemon.id])
-}
-
+  this.pokemonService.updatePokemon(this.pokemon)
+  .subscribe(() => 
+  {
+      this.router.navigate(['/pokemons', this.pokemon.id])
+  })
+  }
 }
