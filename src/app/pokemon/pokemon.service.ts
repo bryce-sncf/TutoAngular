@@ -23,8 +23,17 @@ getPokemonById(pokemonId: number): Observable<Pokemon|undefined>
 {
   return this.http.get<Pokemon>(`api/pokemons/${pokemonId}`).pipe(
     tap((response) => this.log(response)),
-    catchError((error)=>this.handleError(error, []))
+    catchError((error)=>this.handleError(error, undefined))
   );
+}
+
+searchPokemonList(term: string): Observable<Pokemon[]> {
+  if(term.length<2)
+  return of ([]);
+  return this.http.get<Pokemon[]>(`api/pokemons/?name=${term}`).pipe(
+    tap((response) => this.log(response)),
+    catchError((error)=>this.handleError(error, []))
+  )
 }
 
 addPokemon(pokemon: Pokemon): Observable<Pokemon>{
