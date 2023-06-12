@@ -27,6 +27,18 @@ getPokemonById(pokemonId: number): Observable<Pokemon|undefined>
   );
 }
 
+addPokemon(pokemon: Pokemon): Observable<Pokemon>{
+  const httpOptions = {
+    headers: new HttpHeaders({ 'Content-type' : 'application/json' })
+
+  }
+  return this.http.post<Pokemon>('api/pokemons/', pokemon, httpOptions).pipe(
+  
+    tap((response) => this.log(response)),  
+    catchError((error)=>this.handleError(error, null))
+    );
+}
+
 updatePokemon(pokemon: Pokemon): Observable<null>{
   const httpOptions = {
     headers: new HttpHeaders({ 'Content-type' : 'application/json' })
